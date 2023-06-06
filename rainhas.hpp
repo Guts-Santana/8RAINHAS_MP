@@ -1,0 +1,1 @@
+bool formatacao(string teste);

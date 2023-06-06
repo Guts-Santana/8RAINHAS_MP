@@ -30,12 +30,46 @@ bool formatacao(string teste) {
     return false;
 }
 
+int** matriz(string teste) {
+    string line;
+    int **ums = (int**)malloc(sizeof(int*)*8);
+    for (int i = 0; i < 8; i++) {
+        ums[i]= (int*)malloc(sizeof(int)*2);
+    }
+    
+    
+
+    ifstream arquivo (teste);
+    if (arquivo.is_open()) {
+        int x=0;
+        while (! arquivo.eof()) {
+            getline(arquivo,line);
+            for (int i = 0; i < 8; i++) {
+                if (line[i]=='1') {
+                    ums[i][0] = i + 1;
+                    ums[i][1] = x + 1;
+                }
+            }
+            x++;
+            
+        }
+        arquivo.close();
+    }
+    //return ums;
+    return ums;
+}
 
 int main(){
-  if (formatacao("testagem.txt")) {
-    cout<<-1;
-    return -1;
-  }
+  cout<<formatacao("testagem.txt")<<endl;
+  int **rainhas = matriz("testagem.txt");
+  for (int i = 0; i < 8; i++) {
+        cout<<rainhas[i][0]<<rainhas[i][1]<<"\n";
+    }
+
+    for (int i = 0; i < 8; i++) {
+        free(rainhas[i]);
+    }
+    free(rainhas);
   return 0;
   
 }
