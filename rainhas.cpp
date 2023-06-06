@@ -33,6 +33,7 @@ bool formatacao(string teste) {
 
 int main(){
   if (formatacao("testagem.txt")) {
+    cout<<-1;
     return -1;
   }
   return 0;
