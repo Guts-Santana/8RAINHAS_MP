@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include "rainhas.hpp"
+
 using namespace std;
 bool formatacao(string teste) {
     string line;
@@ -59,9 +61,9 @@ int** matriz(string teste) {
     return ums;
 }
 
-int main(){
-  cout<<formatacao("testagem.txt")<<endl;
-  int **rainhas = matriz("testagem.txt");
+int ataques(string arquivos){
+  cout<<formatacao(arquivos)<<endl;
+  int **rainhas = matriz(arquivos);
   for (int i = 0; i < 8; i++) {
         cout<<rainhas[i][0]<<rainhas[i][1]<<"\n";
     }
