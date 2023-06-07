@@ -23,4 +23,5 @@ TEST_CASE("Arquivos que resolvem o sistema") {
    REQUIRE(chamada("teste12.txt") == 0);
    REQUIRE(chamada("teste13.txt") == 0);
    REQUIRE(chamada("teste14.txt") == 0);
+   REQUIRE(chamada("teste15.txt") == 0);
 }
