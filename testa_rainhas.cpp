@@ -19,4 +19,6 @@ TEST_CASE("Se o arquivo só tem linhas de 8 termos"){
 
 |TEST_CASE("Arquivos que resolvem o sistema") {
    REQUIRE(chamada("teste10.txt") == 0);
+   REQUIRE(chamada("teste11.txt") == 0);
+   //REQUIRE(chamada("teste10.txt") == 0);
 }
