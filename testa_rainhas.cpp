@@ -13,4 +13,6 @@ TEST_CASE("Se o arquivo tem 8 linhas") {
 TEST_CASE("Se o arquivo só tem linhas de 8 termos"){
    REQUIRE(chamada("teste6.txt") == -1);
    REQUIRE(chamada("teste7.txt") == -1);
+   REQUIRE(chamada("teste8.txt") == -1);
+   REQUIRE(chamada("teste9.txt") == -1);
 }
