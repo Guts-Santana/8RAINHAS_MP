@@ -43,29 +43,96 @@ int** matriz(string teste) {
 
     ifstream arquivo (teste);
     if (arquivo.is_open()) {
-        int x=0;
+        int y = 0, x = 0;
         while (! arquivo.eof()) {
             getline(arquivo,line);
             for (int i = 0; i < 8; i++) {
                 if (line[i]=='1') {
-                    ums[i][0] = i + 1;
-                    ums[i][1] = x + 1;
+                    ums[x][0] = i + 1;
+                    ums[x][1] = y + 1;
+                    x++;
                 }
             }
-            x++;
+            y++;
             
         }
         arquivo.close();
     }
-    //return ums;
     return ums;
 }
 
-int ataques(string arquivos){
-  cout<<formatacao(arquivos)<<endl;
-  int **rainhas = matriz(arquivos);
-  for (int i = 0; i < 8; i++) {
-        cout<<rainhas[i][0]<<rainhas[i][1]<<"\n";
+void arquivo_saida(vector<vector<int>> atq, string tx){
+    ofstream arquivo("ataques.txt", ios::app);
+    arquivo<<tx<<endl;
+    for (int i = 0; i < atq.size() - 1; i=i+2){
+        arquivo << atq[i][0] << ',' << atq[i][1] <<' ';
+        arquivo << atq[i+1][0] << ',' << atq[i+1][1] <<endl;
+    }
+    arquivo<<'\n';
+    arquivo.close();
+}
+
+bool ataques(int **queens, string tx) {
+    vector<vector<int>> ameacas;
+    for (int i = 0; i < 7; i++) {
+        for (int j = i+1; j<8;j++){
+            if (queens[i][0]==queens[j][0]) {
+                vector<int> aux;
+                vector<int> aux2;
+                aux.push_back(queens[i][0]);
+                aux.push_back(queens[i][1]);
+                ameacas.push_back(aux);
+                aux2.push_back(queens[j][0]);
+                aux2.push_back(queens[j][1]);
+                ameacas.push_back(aux2);
+                break;
+            }
+            if (queens[i][1]==queens[j][1]) {
+                vector<int> aux;
+                vector<int> aux2;
+                aux.push_back(queens[i][0]);
+                aux.push_back(queens[i][1]);
+                ameacas.push_back(aux);
+                aux2.push_back(queens[j][0]);
+                aux2.push_back(queens[j][1]);
+                ameacas.push_back(aux2);
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < 7; i++)
+    {
+        for (int j = i+1; j < 8; j++){
+            if (fabs(queens[i][1]-queens[j][1])/fabs(queens[i][0]-queens[j][0])==1) {
+                vector<int> aux;
+                vector<int> aux2;
+                aux.push_back(queens[i][0]);
+                aux.push_back(queens[i][1]);
+                ameacas.push_back(aux);
+                aux2.push_back(queens[j][0]);
+                aux2.push_back(queens[j][1]);
+                ameacas.push_back(aux2);
+                break;
+            }
+        }
+    }
+    if (ameacas.size()==0) {
+        return false;
+    }
+    arquivo_saida(ameacas, tx);
+    return true;
+}
+
+
+
+int chamada(string a){
+
+    if (formatacao(a)) {
+        return -1;
+    }
+  int **rainhas = matriz(a);
+    if (ataques(rainhas, a)) {
+        return 1;
     }
 
     for (int i = 0; i < 8; i++) {

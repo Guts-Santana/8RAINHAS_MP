@@ -3,6 +3,11 @@
 #include "rainhas.hpp"
 
 
-TEST_CASE("Se a função lê o arquivo") {
-   REQUIRE(ataques("teste 1") == 0);
+TEST_CASE("Se o arquivo tem 8 linhas") {
+   REQUIRE(chamada("teste2.txt") == -1);
+   REQUIRE(chamada("teste3.txt") == -1);
+   REQUIRE(chamada("teste4.txt") == -1);
+//    REQUIRE(chamada("teste3.txt") == -1);
+//    REQUIRE(chamada("teste2.txt") == -1);
+//    REQUIRE(chamada("teste3.txt") == -1);
 }
