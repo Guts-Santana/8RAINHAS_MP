@@ -23,5 +23,14 @@ TEST_CASE("Arquivos que resolvem o sistema") {
    REQUIRE(chamada("teste12.txt") == 0);
    REQUIRE(chamada("teste13.txt") == 0);
    REQUIRE(chamada("teste14.txt") == 0);
-   REQUIRE(chamada("teste15.txt") == 0);
+   REQUIRE(chamada("teste16.txt") == 0);
+   REQUIRE(chamada("teste17.txt") == 0);
+   REQUIRE(chamada("teste18.txt") == 0);
+   REQUIRE(chamada("teste19.txt") == 0);
+   REQUIRE(chamada("teste20.txt") == 0);
+   REQUIRE(chamada("teste21.txt") == 0);
+}
+
+TEST_CASE("Arquivos com ataque") {
+   REQUIRE(chamada("teste22.txt") == 1);
 }
