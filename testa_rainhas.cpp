@@ -35,4 +35,6 @@ TEST_CASE("Arquivos com ataque") {
    REQUIRE(chamada("teste22.txt") == 1);
    REQUIRE(chamada("teste23.txt") == 1);
    REQUIRE(chamada("teste24.txt") == 1);
+   REQUIRE(chamada("teste25.txt") == 1);
+   REQUIRE(chamada("teste26.txt") == 1);
 }
