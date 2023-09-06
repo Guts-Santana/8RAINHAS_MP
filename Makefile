@@ -37,5 +37,3 @@ testa_romanos: 	testa_rainhas.cpp   rainhas.cpp rainhas.hpp rainhas.o
 
 clean:
 	rm -rf *.o *.exe *.gc*
-	
-	

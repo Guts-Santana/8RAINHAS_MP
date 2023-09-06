@@ -3,6 +3,7 @@
 #include <string>
 #include "rainhas.hpp"
 
+
 using namespace std;
 
 bool formatacao(string teste) {
